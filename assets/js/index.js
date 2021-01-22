@@ -30,15 +30,14 @@ function getUserInfo() {
     })
 }
 function renderAvatar(user) {
-    // 1.渲染名称
+    //1.渲染名称（nickname优先，如果没有，就用username）
     var name = user.nickname || user.username;
     $("#welcome").html("欢迎&nbsp;&nbsp;" + name);
-    if (user.uesr_pic !== null) {
-        // 有头像
+    //2.渲染头像
+    if (user.user_pic !== null) {
         $(".layui-nav-img").show().attr("src", user.user_pic);
         $(".text-avatar").hide();
     } else {
-        // 莫得头像
         $(".layui-nav-img").hide();
         var text = name[0].toUpperCase();
         $(".text-avatar").show().html(text);
